@@ -3,7 +3,7 @@
 import { IFieldResult, IFormConfig, IFormData } from "@/interfaces/form-interfaces";
 import { getFormConfig, getFormData } from "@/services/form-service";
 import { Box, Button, Container, FormControl, Stack, TextField } from "@mui/material";
-import FieldInput, { FieldInputProps } from "./field-input";
+import FieldInput, { FieldInputProps } from "./field-input/field-input";
 import { FormEventHandler, useEffect, useState } from "react";
 import dayjs from "dayjs";
 
@@ -48,7 +48,7 @@ export default function AppForm({ config, data }: { config: IFormConfig, data: I
     return <Container></Container>
   else
     return (
-      <Container>
+      <Container sx={{ height: '100%' }}>
         <Box padding={2} component="form" onSubmit={submitForm}>
           <Stack spacing={2}>
             {

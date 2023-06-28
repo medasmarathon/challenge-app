@@ -4,8 +4,7 @@ import Image from 'next/image'
 
 export default async function Home() {
 
-  var formConfig = await getFormConfig();
-  var formData = await getFormData();
+  let [formConfig, formData] = await Promise.all([getFormConfig(), getFormData()]);
 
   return (
     <main>

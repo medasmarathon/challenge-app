@@ -2,9 +2,9 @@
 
 import { IFormConfig, IFormData } from "@/interfaces/form-interfaces";
 import { getFormConfig, getFormData } from "@/services/form-service";
-import { Box, Button, Container, Stack, TextField } from "@mui/material";
+import { Box, Button, Container, FormControl, Stack, TextField } from "@mui/material";
 import FieldInput, { FieldInputProps } from "./field-input";
-import { useEffect, useState } from "react";
+import { FormEventHandler, useEffect, useState } from "react";
 
 export default function AppForm({ config, data }: { config: IFormConfig, data: IFormData }) {
 
@@ -29,20 +29,25 @@ export default function AppForm({ config, data }: { config: IFormConfig, data: I
     setInputData(newInputData);
   };
 
-  console.log(inputData);
+  const submitForm: FormEventHandler<HTMLFormElement> = (e) => {
+    e.preventDefault();
+    console.log(e.target);
+    console.log(inputData);
+  }
+
   if (inputData.length == 0)
     return <Container></Container>
   else
     return (
       <Container>
-        <Box padding={2}>
+        <Box padding={2} component="form" onSubmit={submitForm}>
           <Stack spacing={2}>
             {
               inputData.map(fieldInput => (
                 <FieldInput key={fieldInput.id} {...fieldInput} onInputChange={setFormFieldInput}></FieldInput>
               ))
             }
-            <Button variant="outlined">Submit</Button>
+            <Button variant="outlined" type="submit">Submit</Button>
           </Stack>
         </Box>
       </Container>

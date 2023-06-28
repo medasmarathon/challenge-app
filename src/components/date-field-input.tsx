@@ -4,7 +4,7 @@ import { DatePicker } from "@mui/x-date-pickers";
 import dayjs, { Dayjs } from "dayjs";
 import { useState } from "react";
 export interface DateFieldInputProps extends IField {
-  value: Date
+  value: string
   onInputChange: (input: DateFieldInputProps) => void
 }
 export default function DateFieldInput(props: DateFieldInputProps) {
@@ -16,7 +16,7 @@ export default function DateFieldInput(props: DateFieldInputProps) {
     setInputValue(dayjs(value));
     debouncedInputChange({
       ...props,
-      value: value.toDate()
+      value: value.format("MM/DD/YYYY")
     });
   }
   return (

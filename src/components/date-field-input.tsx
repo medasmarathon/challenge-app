@@ -1,8 +1,9 @@
 import { IField } from "@/interfaces/form-interfaces";
-interface DateFieldInputProps extends IField {
+export interface DateFieldInputProps extends IField {
   value: Date
+  onInputChange: (input: DateFieldInputProps) => void
 }
-export default function DateFieldInput(props: IField) {
+export default function DateFieldInput(props: DateFieldInputProps) {
   return (
     <input></input>
   )

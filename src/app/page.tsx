@@ -9,7 +9,6 @@ export default async function Home() {
 
   return (
     <main>
-      Hello, from next
       <AppForm config={formConfig} data={formData}></AppForm>
     </main>
   )

@@ -1,18 +1,19 @@
 import { IField } from "@/interfaces/form-interfaces";
-import DateFieldInput from "./date-field-input";
-import NumberFieldInput from "./number-field-input";
-import TextFieldInput from "./text-field-input";
-import SelectFieldInput from "./select-field-input";
+import DateFieldInput, { DateFieldInputProps } from "./date-field-input";
+import NumberFieldInput, { NumberFieldInputProps } from "./number-field-input";
+import TextFieldInput, { TextFieldInputProps } from "./text-field-input";
+import SelectFieldInput, { SelectFieldInputProps } from "./select-field-input";
 
-export default function FieldInput(props: IField) {
+export type FieldInputProps = (DateFieldInputProps | NumberFieldInputProps | TextFieldInputProps | SelectFieldInputProps);
+export default function FieldInput(props: FieldInputProps) {
   switch (props.type) {
     case "date":
-      return (<DateFieldInput {...props}></DateFieldInput>);
+      return (<DateFieldInput {...(props as DateFieldInputProps)}></DateFieldInput>);
     case "number":
-      return (<NumberFieldInput {...props}></NumberFieldInput>);
+      return (<NumberFieldInput {...(props as NumberFieldInputProps)}></NumberFieldInput>);
     case "text":
-      return (<TextFieldInput {...props}></TextFieldInput>);
+      return (<TextFieldInput {...(props as TextFieldInputProps)}></TextFieldInput>);
     case "select":
-      return (<SelectFieldInput {...props}></SelectFieldInput>);
+      return (<SelectFieldInput {...(props as SelectFieldInputProps)}></SelectFieldInput>);
   }
 }

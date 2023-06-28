@@ -1,4 +1,4 @@
-import { IField } from "@/interfaces/form-interfaces";
+import { IField } from "@/interfaces/form";
 import { MenuItem, TextField, debounce } from "@mui/material";
 import { useState } from "react";
 

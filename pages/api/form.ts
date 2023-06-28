@@ -1,4 +1,4 @@
-import { IFormData } from "@/interfaces/form-interfaces";
+import { IFormData } from "@/interfaces/form";
 import { updateFormData } from "@/services/form-service";
 import { NextApiRequest, NextApiResponse } from "next";
 

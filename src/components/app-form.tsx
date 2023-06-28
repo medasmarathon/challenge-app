@@ -1,9 +1,9 @@
 'use client'
 
-import { IFieldResult, IFormConfig, IFormData } from "@/interfaces/form-interfaces";
+import { IFieldResult, IFormConfig, IFormData } from "@/interfaces/form";
 import { getFormConfig, getFormData } from "@/services/form-service";
 import { Box, Button, Container, FormControl, Stack, TextField } from "@mui/material";
-import FieldInput, { FieldInputProps } from "./field-input/field-input";
+import GenericFieldInput, { FieldInputProps } from "./field-input/generic-field-input";
 import { FormEventHandler, useEffect, useState } from "react";
 import dayjs from "dayjs";
 
@@ -53,7 +53,7 @@ export default function AppForm({ config, data }: { config: IFormConfig, data: I
           <Stack spacing={2}>
             {
               inputData.map(fieldInput => (
-                <FieldInput key={fieldInput.id} {...fieldInput} onInputChange={setFormFieldInput}></FieldInput>
+                <GenericFieldInput key={fieldInput.id} {...fieldInput} onInputChange={setFormFieldInput}></GenericFieldInput>
               ))
             }
             <Button variant="outlined" type="submit">Submit</Button>

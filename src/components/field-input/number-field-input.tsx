@@ -1,4 +1,4 @@
-import { IField } from "@/interfaces/form-interfaces";
+import { IField } from "@/interfaces/form";
 import { TextField, debounce } from "@mui/material";
 import { useState } from "react";
 export interface NumberFieldInputProps extends IField {

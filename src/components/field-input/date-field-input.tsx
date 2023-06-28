@@ -1,4 +1,4 @@
-import { IField } from "@/interfaces/form-interfaces";
+import { IField } from "@/interfaces/form";
 import { debounce } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers";
 import dayjs, { Dayjs } from "dayjs";

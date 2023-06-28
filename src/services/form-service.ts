@@ -1,6 +1,6 @@
 import path from "path";
 import { promises as fs } from 'fs';
-import { IFormConfig, IFormData } from "@/interfaces/form-interfaces";
+import { IFormConfig, IFormData } from "@/interfaces/form";
 
 const jsonDirectory = path.join(process.cwd(), 'json');
 

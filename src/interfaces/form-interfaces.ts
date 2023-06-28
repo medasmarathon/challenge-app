@@ -22,6 +22,6 @@ export interface IFieldResult {
   value: number | string
 }
 export interface IFormData {
-  dateSaved: Date,
+  dateSaved: string,
   data: IFieldResult[]
 }

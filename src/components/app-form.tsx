@@ -1,10 +1,11 @@
 'use client'
 
-import { IFormConfig, IFormData } from "@/interfaces/form-interfaces";
+import { IFieldResult, IFormConfig, IFormData } from "@/interfaces/form-interfaces";
 import { getFormConfig, getFormData } from "@/services/form-service";
 import { Box, Button, Container, FormControl, Stack, TextField } from "@mui/material";
 import FieldInput, { FieldInputProps } from "./field-input";
 import { FormEventHandler, useEffect, useState } from "react";
+import dayjs from "dayjs";
 
 export default function AppForm({ config, data }: { config: IFormConfig, data: IFormData }) {
 
@@ -18,8 +19,6 @@ export default function AppForm({ config, data }: { config: IFormConfig, data: I
       } as FieldInputProps;
     });
 
-    console.log(presetFields);
-
     setInputData(presetFields);
   }, []);
 
@@ -29,10 +28,20 @@ export default function AppForm({ config, data }: { config: IFormConfig, data: I
     setInputData(newInputData);
   };
 
-  const submitForm: FormEventHandler<HTMLFormElement> = (e) => {
+  const submitForm: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
-    console.log(e.target);
-    console.log(inputData);
+    let request: IFormData = {
+      dateSaved: dayjs(new Date()).format("MM/DD/YYYY"),
+      data: inputData.map(d => ({
+        fieldId: d.id,
+        value: d.value
+      }) as IFieldResult)
+    };
+    let result = await fetch('/api/form', {
+      method: "POST",
+      body: JSON.stringify(request)
+    }).then(r => r.json());
+    console.log(result);
   }
 
   if (inputData.length == 0)

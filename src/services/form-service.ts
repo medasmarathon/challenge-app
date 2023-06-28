@@ -14,4 +14,8 @@ const getFormData = async function () {
   return JSON.parse(fileContents) as IFormData;
 }
 
-export { getFormConfig, getFormData };
+const updateFormData = async function (request: IFormData) {
+  await fs.writeFile(jsonDirectory + '/data.json', JSON.stringify(request, null, 4))
+}
+
+export { getFormConfig, getFormData, updateFormData };

@@ -24,7 +24,8 @@ export default function SelectFieldInput(props: SelectFieldInputProps) {
       id="filled-select-currency"
       select
       label={props.name}
-      variant="filled"
+      variant="outlined"
+      color="primary"
       value={inputValue}
       onChange={(e) => setInput(Number(e.target.value))}
     >

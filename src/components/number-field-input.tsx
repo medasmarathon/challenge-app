@@ -20,7 +20,8 @@ export default function NumberFieldInput(props: NumberFieldInputProps) {
   return (
     <TextField
       id="filled-number"
-      label={props.name} variant="filled"
+      label={props.name} variant="outlined"
+      color="primary"
       inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
       value={inputValue}
       onChange={(e) => setInput(Number(e.target.value))} />

@@ -24,8 +24,9 @@ export default function TextFieldInput(props: TextFieldInputProps) {
   return (
     <TextField
       id="filled-basic"
-      label={props.name} variant="filled"
+      label={props.name} variant="outlined"
       value={inputValue}
+      color="primary"
       onChange={(e) => setInput(e.target.value)} />
   )
 }

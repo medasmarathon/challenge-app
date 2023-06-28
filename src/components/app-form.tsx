@@ -35,7 +35,7 @@ export default function AppForm({ config, data }: { config: IFormConfig, data: I
   else
     return (
       <Container>
-        <Box>
+        <Box padding={2}>
           <Stack spacing={2}>
             {
               inputData.map(fieldInput => (

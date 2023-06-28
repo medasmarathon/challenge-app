@@ -1,6 +1,5 @@
 import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
+import ClientAppProvider from './client-app-provider'
 
 export const metadata = {
   title: 'Create Next App',
@@ -13,8 +12,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" style={{ height: "100%" }}>
+      <body style={{ minHeight: "100%" }}>
+        <ClientAppProvider>
+          {children}
+        </ClientAppProvider>
+      </body>
     </html>
   )
 }

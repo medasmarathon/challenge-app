@@ -34,6 +34,9 @@ pnpm start
 ```
 
 
+You can specify custom port for running application by using
+`npm run start -- -p 3131` or `npm run dev -- -p 3131`
+
 ## Other API
 
 Form config change can be done by a POST request to `/api/config` with JSON body, like

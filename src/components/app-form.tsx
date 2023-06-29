@@ -11,6 +11,7 @@ export default function AppForm({ config, data }: { config: IFormConfig, data: I
 
   const [inputData, setInputData] = useState<FieldInputProps[]>([]);
   useEffect(() => {
+    if (!data || !config) return;
     let presetFields = data.data.map(fr => {
       let fieldConfig = config.fields.find(f => f.id == fr.fieldId);
       return {

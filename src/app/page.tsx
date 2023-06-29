@@ -1,9 +1,9 @@
 import AppForm from '@/components/app-form'
 import { getFormConfig, getFormData } from '@/services/form-service'
-import Image from 'next/image'
 
 export default async function Home() {
 
+  // get all required server data for page on load as this is server component
   let [formConfig, formData] = await Promise.all([getFormConfig(), getFormData()]);
 
   return (

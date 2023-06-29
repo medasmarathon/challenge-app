@@ -1,16 +1,17 @@
 'use client'
 
 import { IFieldResult, IFormConfig, IFormData } from "@/interfaces/form";
-import { getFormConfig, getFormData } from "@/services/form-service";
 import { Box, Button, Container, FormControl, Stack, TextField } from "@mui/material";
 import GenericFieldInput, { FieldInputProps } from "./field-input/generic-field-input";
 import { FormEventHandler, useEffect, useState } from "react";
 import dayjs from "dayjs";
+import { API } from "@/api";
 
 export default function AppForm({ config, data }: { config: IFormConfig, data: IFormData }) {
 
   const [inputData, setInputData] = useState<FieldInputProps[]>([]);
   useEffect(() => {
+    if (!data || !config) return;
     let presetFields = data.data.map(fr => {
       let fieldConfig = config.fields.find(f => f.id == fr.fieldId);
       return {
@@ -37,8 +38,12 @@ export default function AppForm({ config, data }: { config: IFormConfig, data: I
         value: d.value
       }) as IFieldResult)
     };
-    let result = await fetch('/api/form', {
+    let result = await fetch(API.FORM, {
       method: "POST",
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify(request)
     }).then(r => r.json());
     console.log(result);

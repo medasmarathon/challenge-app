@@ -1,8 +1,7 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## Run a development
 
-First, run the development server:
 
 ```bash
 npm run dev
@@ -14,21 +13,78 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Run a production server
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
+npm run build
+# or
+yarn build
+# or
+pnpm build
+```
 
-## Learn More
+then
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run start
+# or
+yarn start
+# or
+pnpm start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Other API
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Form config change can be done by a POST request to `/api/config` with JSON body, like
+```json
+{
+    "id": 1,
+    "formName": "Code Assessment",
+    "fields": [
+        {
+            "id": 1,
+            "name": "Product Name",
+            "type": "text"
+        },
+        {
+            "id": 2,
+            "name": "Procedure",
+            "type": "text"
+        },
+        {
+            "id": 3,
+            "name": "Creation Date",
+            "type": "date"
+        },
+        {
+            "id": 4,
+            "name": "Units",
+            "type": "number"
+        },
+        {
+            "id": 5,
+            "name": "location",
+            "type": "select",
+            "options": [
+                {
+                    "name": "Ho Chi Minh",
+                    "value": 1
+                },
+                {
+                    "name": "Ha Noi",
+                    "value": 2
+                },
+                {
+                    "name": "New York",
+                    "value": 3
+                },
+                {
+                    "name": "Paris",
+                    "value": 4
+                }
+            ]
+        }
+    ]
+}
+```

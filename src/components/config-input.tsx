@@ -46,7 +46,7 @@ export default function ConfigInput(props: ConfigInputProps) {
     setOpenOptionModal(true);
   }
   const onOptionEdited = (option: OptionEditorProps) => {
-    let newOptions = options!.filter(op => op.value != option.value);
+    let newOptions = options !== undefined ? options.filter(op => op.value != option.value) : [];
     newOptions.push({ name: option.name, value: option.value } as IFieldOption);
     setOptions(newOptions.sort((a,b) => (a.value - b.value)));
   }

@@ -6,7 +6,7 @@ export interface NumberFieldInputProps extends IField {
   onInputChange: (input: NumberFieldInputProps) => void
 }
 export default function NumberFieldInput(props: NumberFieldInputProps) {
-  let [inputValue, setInputValue] = useState(props.value);
+  let [inputValue, setInputValue] = useState(Number(props.value) ?? 0);
   const debouncedInputChange = debounce(props.onInputChange, 500);
 
   const setInput = (value: number) => {

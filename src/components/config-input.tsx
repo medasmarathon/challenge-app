@@ -1,7 +1,7 @@
 import { IField, IFieldOption } from "@/interfaces/form";
 import { AddCircleOutline } from "@mui/icons-material";
 import { Box, Card, Chip, MenuItem, Modal, Stack, TextField, debounce } from "@mui/material";
-import { MutableRefObject, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import OptionEditor, { OptionEditorProps } from "./option-editor";
 
 export interface ConfigInputProps extends IField {
@@ -13,8 +13,6 @@ export default function ConfigInput(props: ConfigInputProps) {
   const [type, setType] = useState<IField["type"]>(props.type);
   const [options, setOptions] = useState<IFieldOption[] | undefined>(props.options);
   const [openOptionModal, setOpenOptionModal] = useState(false);
-
-  console.log(type);
 
   const debouncedInputChange = debounce(props.onInputChange, 500);
 

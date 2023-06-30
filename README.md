@@ -39,7 +39,12 @@ You can specify custom port for running application by using
 
 ## Other API
 
-Form config change can be done by a POST request to `/api/config` with JSON body, like
+Form config change can be done 
+
+by go to `/config/` and change with UI,
+
+or by a POST request to `/api/config` with JSON body, like
+
 ```json
 {
     "id": 1,

@@ -6,6 +6,7 @@ import { ApiResponse } from '@/interfaces/api-response';
 export async function POST(request: Request) {
   try {
     let config = await request.json() as IFormConfig;
+    console.log(config);
   
     await updateFormConfig(config);
     return NextResponse.json(

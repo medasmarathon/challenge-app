@@ -11,7 +11,7 @@ export interface IField {
 }
 
 export interface IFormConfig {
-  id: number,
+  id?: number,
   formName: string,
   fields: IField[]
 }

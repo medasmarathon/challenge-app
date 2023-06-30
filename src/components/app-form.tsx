@@ -1,13 +1,13 @@
 'use client'
 
 import { IFieldResult, IFormConfig, IFormData } from "@/interfaces/form";
-import { Box, Button, Container, FormControl, Stack, TextField } from "@mui/material";
+import { Box, Button, Container, Stack } from "@mui/material";
 import GenericFieldInput, { FieldInputProps } from "./field-input/generic-field-input";
 import { FormEventHandler, useEffect, useState } from "react";
 import dayjs from "dayjs";
 import { API } from "@/api";
 import { useSnackbar } from "notistack";
-import { ApiResponse } from "@/interfaces/api-response";
+import { postApi } from "@/utils/request-api";
 
 export default function AppForm({ config, data }: { config: IFormConfig, data: IFormData }) {
 
@@ -43,16 +43,7 @@ export default function AppForm({ config, data }: { config: IFormConfig, data: I
     };
 
     enqueueSnackbar("Submitting form...", { variant: "info" });
-    let result = await fetch(API.FORM, {
-        method: "POST",
-        headers: {
-          'Accept': 'application/json, text/plain, */*',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(request)
-      })
-      .then(r => 
-        r.json() as Promise<ApiResponse<never>>);
+    let result = await postApi<never>(API.FORM, request);
 
     if (result.status === "success")
       enqueueSnackbar(result.message, { variant: "success" });
